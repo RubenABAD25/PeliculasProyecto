@@ -1,0 +1,101 @@
+package modelo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "tb_Actor")
+public class Actor 
+{
+	@Id
+	@GeneratedValue
+	@NotNull
+	@Column(name = "tb_id")
+	private int id;
+	private String nombres;
+	private String apellidos;
+	private String nacionalidad;
+	private String fechaN;
+	/**
+	 * 
+	 * @return
+	 */
+	public int getId() {
+		return id;
+	}
+	/**
+	 * 
+	 * @param id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String getNombres() {
+		return nombres;
+	}
+	/**
+	 * 
+	 * @param nombres
+	 */
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String getApellidos() {
+		return apellidos;
+	}
+	/**
+	 * 
+	 * @param apellidos
+	 */
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+	/***
+	 * 
+	 * @param nacionalidad
+	 */
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String getFechaN() {
+		return fechaN;
+	}
+	/**
+	 * 
+	 * @param fechaN
+	 */
+	public void setFechaN(String fechaN) {
+		this.fechaN = fechaN;
+	}
+	//Mostramos la informacion del objeto Actor
+
+	@Override
+	public String toString() {
+		return "Actor [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", nacionalidad="
+				+ nacionalidad + ", fechaN=" + fechaN + "]";
+	}
+
+}

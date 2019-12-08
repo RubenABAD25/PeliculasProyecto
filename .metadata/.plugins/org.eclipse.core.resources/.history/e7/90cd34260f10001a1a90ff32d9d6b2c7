@@ -1,0 +1,107 @@
+package vista;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+
+import modelo.Ticket;
+import modelo.Vehiculo;
+import negocio.OperacionesLocales;
+
+@ManagedBean
+public class OperacionBean {
+	@Inject
+	private OperacionesLocales ol;
+	/* Beans properties */
+	private  Vehiculo veh;
+	private String parametro;
+	private Ticket ti;
+	private List<Vehiculo>vehiculos;
+	private List<Ticket> tickets;
+	
+	
+	@PostConstruct
+	public void init() 
+	{
+		
+	}
+
+
+	public Vehiculo getVeh() {
+		return veh;
+	}
+
+
+	public void setVeh(Vehiculo veh) {
+		this.veh = veh;
+	}
+
+
+	public String getParametro() {
+		return parametro;
+	}
+
+
+	public void setParametro(String parametro) {
+		this.parametro = parametro;
+	}
+
+
+	public Ticket getTi() {
+		return ti;
+	}
+
+
+	public void setTi(Ticket ti) {
+		this.ti = ti;
+	}
+
+
+	public List<Vehiculo> getVehiculos() {
+		return vehiculos;
+	}
+
+
+	public void setVehiculos(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
+	}
+
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	
+	public String buscarTikets() {
+		//this.tickets=this.ol.getTickets(this.parametro);
+		
+		/*SimpleDateFormat  fechaFormato = new SimpleDateFormat( "yyyy-MM-dd");
+		java.sql.Timestamp fechaSQL;
+		try {
+			fechaSQL = new java.sql.Timestamp(fechaFormato.parse(fechaFormato.format(ti.getfInicio())).getTime());
+			
+			this.tickets=this.ol.getTickets(fechaSQL);
+			System.out.println(fechaSQL);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.err.println("error de fecha");
+		}*/
+		this.tickets=this.ol.getTickets(new Date("2019-11-11 13:05:10"));
+		return null;
+	}
+	public String buscarVehiculos() {
+		this.vehiculos=this.ol.getVehiculos(this.parametro);
+		return null;
+	}
+	
+}

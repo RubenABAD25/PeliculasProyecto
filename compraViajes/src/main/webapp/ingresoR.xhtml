@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:form>
+<label>Id:</label>
+<h:inputText value="#{gestionBean.r.id}" />
+<label>Descripcion:</label>
+<h:inputText value="#{gestionBean.r.descripcion}" />
+<label>Valor:</label>
+<h:inputText value="#{gestionBean.r.valor}" />
+<label>Origen:</label>
+<h:inputText value="#{gestionBean.codo}" />
+<label>Destino:</label>
+<h:inputText value="#{gestionBean.codd}" />
+<h:commandButton action="#{gestionBean.ingresarR()}" value="IngresarR"/>
+<h:commandButton action="listadoR" value="ListarG" />
+</h:form>
+
+</body> 
+</html>

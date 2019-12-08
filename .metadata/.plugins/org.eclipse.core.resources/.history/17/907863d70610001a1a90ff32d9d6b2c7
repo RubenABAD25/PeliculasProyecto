@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:form>
+<label>Placa:</label>
+<h:inputText value="#{operacionBean.parametro}" />
+<h:commandButton action="#{operacionBean.buscarTikets()}" value="Buscar" />
+<h:dataTable value="#{operacionBean.tickets}" var="t">
+	<h:column>
+		<f:facet name="header">Id</f:facet>
+		#{t.numero}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Hora de Inicio</f:facet>
+		#{t.fInicio}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Hora de Fin</f:facet>
+		#{t.fFin}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Tiempo</f:facet>
+		#{t.tiempo}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Valor</f:facet>
+		#{t.valor}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Placa</f:facet>
+		#{t.unVehiculo.placa}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Marca</f:facet>
+		#{t.unVehiculo.marca}
+	</h:column>
+</h:dataTable>
+</h:form>
+</body> 
+</html>

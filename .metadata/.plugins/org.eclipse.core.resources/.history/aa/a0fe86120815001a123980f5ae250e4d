@@ -1,0 +1,190 @@
+package vista;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+
+import modelo.Ticket;
+import modelo.Vehiculo;
+import negocio.GestionLocal;
+
+@ManagedBean
+public class GestionBean {
+	@Inject
+	private GestionLocal gl;
+	//Bean Properties
+	private Vehiculo vh;
+	private Ticket  tk;
+	private List<Vehiculo> lista;
+	private List<Ticket> lista2;
+	private String parametro;
+	private int tiempo;
+	private int cod;
+	private String placa;
+	private double valor;
+	private int cod2;
+
+
+	public int getCod2() {
+		//tk=this.gl.buscarTicket(this.cod);
+		//cod2=tk.getNumero();
+		return cod2;
+	}
+
+
+	public void setCod2(int cod2) {
+		this.cod2 = cod2;
+	}
+
+
+	//Postconstructor
+	@PostConstruct
+	public void init() 
+	{
+		vh = new Vehiculo();
+		tk = new  Ticket();
+		cod2=tk.getNumero();
+		this.fecha();
+	}
+	//setand Get
+	
+	
+	public Vehiculo getVh() {
+		return vh;
+	}
+	
+
+	public String getPlaca() {
+		return placa;
+	}
+
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+
+	public int getCod() {
+		return gl.numeroTicket();
+	}
+
+	public void setCod(int cod) {
+		this.cod = cod;
+	}
+
+	
+	public int getTiempo() {
+		return tiempo;
+	}
+
+	public void setTiempo(int tiempo) {
+		this.tiempo = tiempo;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public void setVh(Vehiculo vh) {
+		this.vh = vh;
+	}
+	public Ticket getTk() {
+		return tk;
+	}
+	public void setTk(Ticket tk) {
+		this.tk = tk;
+	}
+	public List<Vehiculo> getLista() {
+		return lista;
+	}
+	public void setLista(List<Vehiculo> lista) {
+		this.lista = lista;
+	}
+	public List<Ticket> getLista2() {
+		return lista2;
+	}
+	public void setLista2(List<Ticket> lista2) {
+		this.lista2 = lista2;
+	}
+	public String getParametro() {
+		return parametro;
+	}
+	public void setParametro(String parametro) {
+		this.parametro = parametro;
+	}
+	public String ingresarV() 
+	{
+		this.gl.ingresarVehiculo(vh);
+		return "agregarTick";
+	}
+	public String buscarVehiculo() 
+	{
+		this.vh=this.gl.buscarVehiculo(placa);
+		return null;
+	}
+	
+	public String ingresarT() {
+		Vehiculo v = new Vehiculo();
+		v=gl.buscarVehiculo(placa);
+		this.setVh(v);
+		System.out.println(vh.getPlaca());
+		tk.setFecha(parametro);
+		tk.setNumero(cod);
+		
+		tk.setUveh(v);
+		this.gl.ingresarTicket(tk);
+		return null;
+	}
+
+	public String buscarTicket() 
+	{
+		tk=this.gl.buscarTicket(this.cod);
+		cod2=tk.getNumero();
+			placa= tk.getUveh().getPlaca();
+			System.out.println(""+gl.calcularTiempo(tk.getNumero()));
+			tk.setTiempo(gl.calcularTiempo(tk.getNumero()));
+			tk.setValor(gl.calcularCosto(tk.getNumero()));
+			gl.cobrar(tk);
+		this.buscar();
+		return  null;
+	}
+	public String listarVehiculos() 
+	{
+		this.lista=this.gl.getVehiculos(placa);
+		return null;
+	}
+	public String listarVehiculosTodos() 
+	{
+		this.lista=this.gl.getVehiculostodos();
+		return null;
+	}
+	public String listarTicekts() 
+	{
+		this.lista2=this.gl.getTickets(parametro);
+		return null;
+	}
+	public void fecha(){
+		Calendar fecha = new GregorianCalendar();
+		int mes = fecha.get(Calendar.MONTH) + 1;
+		String fe = fecha.get(Calendar.YEAR) + "/" + mes + "/" + fecha.get(Calendar.DAY_OF_MONTH) + "";
+         setParametro(fe);
+         System.out.println(fe);
+	}
+	public void buscar() 
+	{ 
+		Vehiculo v = new Vehiculo();
+		v=gl.buscarVehiculo(placa);
+		this.setVh(v);
+		System.out.println(vh.getPlaca());
+	}
+	
+	
+}

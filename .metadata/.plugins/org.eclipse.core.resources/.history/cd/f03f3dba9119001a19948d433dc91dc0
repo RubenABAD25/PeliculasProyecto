@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition> xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" template="menu.xhtml">
+
+	<ui:define name = "menu">
+	<div id="cssmenu">
+	<ul>
+		<li><a href='#'><span>Inicio</span></a></li>
+		<li class='has-sub'><a href='#'><span>Peliculas</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Crear</span></a></li>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Generos</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Crear</span></a></li>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Directores</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Crear</span></a></li>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Compras</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+				<li class='has-sub'><a href='#'><span>Modificar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Usuarios</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+				<li class='has-sub'><a href='#'><span>Modificar</span></a></li>
+			</ul>
+		</li>
+	</ul>
+	</div>
+	</ui:define>>
+</ui:composition>

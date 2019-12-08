@@ -1,0 +1,8 @@
+package dao;
+
+import utils.ConexionDB;
+
+public class GeografiaDAO {
+	ConexionDB conexion = new ConexionDB();
+	
+}

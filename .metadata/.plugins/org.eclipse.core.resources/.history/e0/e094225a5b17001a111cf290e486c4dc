@@ -1,0 +1,24 @@
+package vista;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import modelo.Geografia;
+import modelo.Ruta;
+import modelo.Tipo;
+import negocio.GestionLocal;
+
+public class GestionBean {
+	@Inject
+	private GestionLocal gl;
+	//Bean Properties
+	private Tipo t;
+	private Geografia g;
+	private Ruta r;
+	private int cod;
+	private List<Tipo> lista1;
+	private List<Geografia>lista2;
+	private List<Ruta>lista3;
+	
+}

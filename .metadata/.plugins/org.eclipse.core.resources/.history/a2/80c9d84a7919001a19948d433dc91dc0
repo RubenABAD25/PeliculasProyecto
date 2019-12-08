@@ -1,0 +1,14 @@
+package modelo;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Categoria {
+	@Id
+	@GeneratedValue
+	@NotNull
+	@Column(name = "PPR_CODIGO")
+	private int id;
+
+}

@@ -1,0 +1,14 @@
+package modelo;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Pelicula {
+	private int id;
+	private  String sinopsis;
+	private String nombre;
+	private String portada;
+	private int añoPublicacion;
+	private double precio;	
+
+}

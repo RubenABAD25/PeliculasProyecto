@@ -1,0 +1,100 @@
+package vista;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+
+import modelo.Ticket;
+import modelo.Vehiculo;
+import negocio.OperacionesLocales;
+
+@ManagedBean
+public class OperacionBean {
+	@Inject
+	private OperacionesLocales ol;
+	/* Beans properties */
+	private  Vehiculo veh;
+	private String parametro;
+	private Ticket ti;
+	private List<Vehiculo>vehiculos;
+	private List<Ticket> tickets;
+	
+	private String tt;
+	
+	
+	@PostConstruct
+	public void init() 
+	{
+		
+	}
+
+
+	public Vehiculo getVeh() {
+		return veh;
+	}
+	
+	
+
+	public String getTt() {
+		return tt;
+	}
+
+
+	public void setTt(String tt) {
+		this.tt = tt;
+	}
+
+
+	public void setVeh(Vehiculo veh) {
+		this.veh = veh;
+	}
+
+
+	public String getParametro() {
+		return parametro;
+	}
+
+
+	public void setParametro(String parametro) {
+		this.parametro = parametro;
+	}
+
+
+	public Ticket getTi() {
+		return ti;
+	}
+
+
+	public void setTi(Ticket ti) {
+		this.ti = ti;
+	}
+
+
+	public List<Vehiculo> getVehiculos() {
+		return vehiculos;
+	}
+
+
+	public void setVehiculos(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	
+	public List<Ticket> buscarTikets() {
+       Calendar cal = new  GregorianCalendar();
+       return this.tickets=ol.getTickets(cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DAY_OF_MONTH));
+	}
+	public String buscarVehiculos() {
+		this.vehiculos=this.ol.getVehiculos(this.parametro);
+		return null;
+	}
+	
+}

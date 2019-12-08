@@ -1,0 +1,10 @@
+package modelo;
+
+public class Director {
+	private int id;
+	private String nombres;
+	private String apellidos;
+	private String nacionalidad;
+	private String cedula
+
+}

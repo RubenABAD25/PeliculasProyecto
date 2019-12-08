@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:form>
+<label>Numero:</label>
+<h:inputText value="#{gestionBean.cod}" />
+<label>Fecha:</label>
+<h:inputText value="#{gestionBean.parametro}" />
+<label>HoraInicio</label>
+<h:inputText value="#{gestionBean.tk.horaInicio}" />
+<label>HoraFin</label>
+<h:inputText value="#{gestionBean.tk.horaFin}" />
+<label>Tiempo</label>
+<h:inputText value="#{gestionBean.tk.tiempo}" />
+<label>Valor</label>
+<h:inputText value="#{gestionBean.tk.valor}" />
+<label>Placa</label>
+<h:inputText value="#{gestionBean.placa}" />
+<br></br>
+<label>Placa recuperada</label>
+<h:outputText value="#{gestionBean.tk.numero}" />
+<br></br>
+<h:outputText value="#{gestionBean.tk.uveh.placa}" />
+<br></br>
+<h:outputText value="#{gestionBean.tk.uveh.marca}" />
+<br></br>
+<h:outputText value="#{gestionBean.tk.tiempo}" />
+<br></br>
+<h:outputText value="#{gestionBean.tk.valor}" />
+<br></br>
+<h:outputText value="#{gestionBean.tk.fecha}" />
+
+<h:commandButton action="#{gestionBean.ingresarT()}" value="Ingresar"/>
+<h:commandButton action="#{gestionBean.buscarTicket()}" value="BuscarTicket"/>
+<h:commandButton action="#{gestionBean.buscar()}" value="BuscarVehiculo"/>
+
+</h:form>
+
+	
+</body> 
+</html>

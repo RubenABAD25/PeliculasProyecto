@@ -1,0 +1,72 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import modelo.Geografia;
+import utils.ConexionDB;
+
+public class GeografiaDAO {
+	ConexionDB conexion = new ConexionDB();
+	public boolean insertar(Geografia g) {
+		System.out.println("RUEBN "+g);
+		Connection con = conexion.connect();
+		String retorno = "";
+		PreparedStatement statement = null;
+		try {
+			String sql = //"insert into ticket (numero, fInicio, tiempo, valor, placaVehiculo) values(?,?,?,?,?)";
+			"insert into tbgeografia (numero, descripcion,padre,tipoId) values(?,?,?,?)";
+			statement = con.prepareStatement(sql);
+			statement.setInt(1, g.getId());
+			statement.setString(2,g.getDescripcion());
+			statement.setInt(3, g.getPadre());
+			statement.setInt(4, g.getUnTipo().getNumero());
+			statement.executeUpdate();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			conexion.cerrarConexion();
+		}
+		System.out.println(statement.toString());
+		return true;
+
+	}
+
+	public boolean editarTicket(Ticket ticket) {
+		boolean retorno = false;
+		Connection con = conexion.connect();
+		String sql = "UPDATE tbticket set tiempo=?,valor=? WHERE numero = ? ;";
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = con.prepareStatement(sql);
+			preparedStatement.setInt(1, ticket.getTiempo());
+			preparedStatement.setDouble(2, ticket.getValor());
+			preparedStatement.setInt(3, ticket.getNumero());
+			preparedStatement.executeUpdate();
+			
+			retorno = true;
+		} catch (SQLException e) {
+			System.out.println(e.getSQLState());
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			conexion.cerrarConexion();
+		}
+		System.out.println(preparedStatement.toString());
+		return retorno;
+	}
+
+}

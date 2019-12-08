@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:form>
+<label>Fecha:</label>
+<h:inputText value="#{gestionBean.parametro}" />
+<h:commandButton action="#{gestionBean.listarTicekts()}" value="Buscar" />
+<h:dataTable value="#{gestionBean.lista2}" var="ticket">
+	<h:column>
+		<f:facet name="header">Fecha</f:facet>
+		#{ticket.fecha}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Numero</f:facet>
+		#{ticket.numero}
+	</h:column>
+	<h:column>
+		<f:facet name="header">horaInicio</f:facet>
+		#{ticket.horaInicio}
+	</h:column>
+	<h:column>
+		<f:facet name="header">horaFin</f:facet>
+		#{ticket.horaFin}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Tiempo</f:facet>
+		#{ticket.tiempo}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Valor</f:facet>
+		#{ticket.valor}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Vehiculo</f:facet>
+		#{ticket.uveh.placa}
+	</h:column>
+	
+</h:dataTable>
+</h:form>
+
+</body> 
+</html>

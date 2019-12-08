@@ -1,0 +1,5 @@
+package serverboleteria;
+
+public interface OperacionesLocales {
+
+}

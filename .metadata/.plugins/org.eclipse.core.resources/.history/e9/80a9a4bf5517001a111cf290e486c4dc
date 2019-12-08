@@ -1,0 +1,18 @@
+package negocio;
+
+import java.util.List;
+
+import javax.ejb.Local;
+@Local
+public interface GestionLocal {
+	public boolean ingresarTipo(Tipo unTipo;
+	public int numeroTicket();
+	public Vehiculo buscarVehiculo(String placa) ;
+	public boolean ingresarVehiculo(Vehiculo v) ;
+	public Ticket buscarTicket(int numeroT) ;
+	public boolean cobrar(Ticket unTicket);
+	public List<Vehiculo> getVehiculos(String placa);
+	public List<Vehiculo> getVehiculostodos();
+
+
+}

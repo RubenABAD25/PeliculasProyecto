@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+   <meta charset='utf-8'>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <link rel="stylesheet" href="styles.css"/>
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="script.js"></script>
+   <title>CSS MenuMaker</title>
+</h:head>
+<body>
+<ui:define name="menu"></ui:define>
+<div id="cssmenu">
+	<ul>
+		<li><a href='#'><span>Inicio</span></a></li>
+		<li class='has-sub'><a href='#'><span>Peliculas</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Crear</span></a></li>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Generos</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Crear</span></a></li>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Directores</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Crear</span></a></li>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Compras</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+				<li class='has-sub'><a href='#'><span>Modificar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Usuarios</span></a>
+			<ul>
+				<li class='has-sub'><a href='#'><span>Listar</span></a></li>
+				<li class='has-sub'><a href='#'><span>Modificar</span></a></li>
+			</ul>
+		</li>
+	</ul>
+	</div>
+
+</body>
+</html>

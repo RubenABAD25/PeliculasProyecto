@@ -1,0 +1,10 @@
+package modelo;
+
+public class Ruta {
+	private int id;
+	private String descripcion;
+	private double valor;
+	private Geografia origen;
+	private Geografia destino;
+
+}

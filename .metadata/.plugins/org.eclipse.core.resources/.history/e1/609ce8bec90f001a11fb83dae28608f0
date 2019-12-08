@@ -1,0 +1,28 @@
+package serverboleteria;
+
+import java.util.List;
+
+import javax.ejb.Local;
+
+import ec.edu.ups.boleteriaVehiculos.entidades.Ticket;
+import ec.edu.ups.boleteriaVehiculos.entidades.Vehiculo;
+import modelo.Cliente;
+
+@Local
+public interface OperacionesLocales {
+	public int suma(int a, int b);
+	public int calcularTiempo(int numeroT) ;
+	public double calcularCosto(int numeroT) ;
+	
+	public Ticket preCobrarTicket(int numero);
+	public boolean ingresarTicket(Ticket unTicket);
+	
+	public int numeroTicket();
+	
+	public Vehiculo buscarVehiculo(String placa) ;
+	public boolean ingresarVehiculo(String placa, String marca) ;
+	public Ticket buscarTicket(int numeroT) ;
+	public boolean cobrar(Ticket unTicket);
+	public List<Vehiculo> getCliente(String cedula);
+
+}

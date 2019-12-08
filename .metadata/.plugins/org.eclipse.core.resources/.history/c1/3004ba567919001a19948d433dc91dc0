@@ -1,0 +1,18 @@
+package modelo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "VIS_PRACTICAS_PRE_PRO")
+public class Categoria {
+	@Id
+	@GeneratedValue
+	@NotNull
+	@Column(name = "PPR_CODIGO")
+	private int id;
+
+}

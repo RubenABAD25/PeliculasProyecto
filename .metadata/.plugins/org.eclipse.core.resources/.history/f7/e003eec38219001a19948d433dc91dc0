@@ -1,0 +1,35 @@
+package modelo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "tb_Pelicula")
+public class Pelicula {
+	@Id
+	@GeneratedValue
+	@NotNull
+	@Column(name = "pel_id")
+	private int id;
+	@NotNull
+	@Column(name = "pel_sinopsis")
+	private  String sinopsis;
+	@NotNull
+	@Column(name = "pel_nombre")
+	private String nombre;
+	@NotNull
+	@Column(name = "pel_portada")
+	private String portada;
+	@NotNull
+	@Column(name = "pel_id")
+	private int añoPublicacion;
+	@NotNull
+	@Column(name = "pel_id")
+	private double precio;
+	
+	
+}

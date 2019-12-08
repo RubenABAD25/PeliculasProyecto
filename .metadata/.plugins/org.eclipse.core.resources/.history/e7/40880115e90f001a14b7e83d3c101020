@@ -1,0 +1,216 @@
+package ec.edu.ups.boleteriaVehiculos.datos;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
+import ec.edu.ups.boleteriaVehiculos.Conexion.ConexionDB;
+import modelo.Ticket;
+import modelo.Vehiculo;
+
+public class TIcketDAO {
+
+	ConexionDB conexion = new ConexionDB();
+	private VehiculoDAO vdao;
+
+	public boolean insertar(Ticket ticket) {
+		Connection con = conexion.connect();
+		String retorno = "";
+		PreparedStatement statement = null;
+		try {
+			String sql = //"insert into ticket (numero, fInicio, tiempo, valor, placaVehiculo) values(?,?,?,?,?)";
+			"insert into ticket (numero, fInicio, placaVehiculo) values(?,?,?)";
+			statement = con.prepareStatement(sql);
+			statement.setInt(1, ticket.getNumero());
+			statement.setString(2, "" + ticket.getfInicio());
+			statement.setString(3, ticket.getUnVehiculo().getPlaca());
+			statement.executeUpdate();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getSQLState());
+		} finally {
+
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			conexion.cerrarConexion();
+		}
+		System.out.println(statement.toString());
+		return true;
+
+	}
+
+	public boolean editarTicket(Ticket ticket) {
+		boolean retorno = false;
+		Connection con = conexion.connect();
+		String sql = "UPDATE ticket set fFin = ?, tiempo=?,valor=? WHERE numero = ? ;";
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = con.prepareStatement(sql);
+			preparedStatement.setString(1, "" + ticket.getfFin());
+			preparedStatement.setInt(2, ticket.getTiempo());
+			preparedStatement.setDouble(3, ticket.getValor());
+			preparedStatement.setInt(4, ticket.getNumero());
+			preparedStatement.executeUpdate();
+			
+			retorno = true;
+		} catch (SQLException e) {
+			System.out.println(e.getSQLState());
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			conexion.cerrarConexion();
+		}
+		System.out.println(preparedStatement.toString());
+		return retorno;
+	}
+
+	public ArrayList<String> obtenerTickets() {
+		Connection con = conexion.connect();
+		// System.out.println(con.toString());
+		ArrayList<String> lista = new ArrayList<>();
+		try {
+			String sql = "SELECT placa, marca FROM Vehiculo";
+			Statement statement = con.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				lista.add(resultSet.getString(1));
+			}
+			con.close();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getSQLState());
+		}
+
+		return lista;
+	}
+
+	public int getNumeroTicket() {
+		Connection con = conexion.connect();
+		int idUltimo = 0;
+		try {
+			String sql = "select max(numero) from ticket;";
+			Statement statement = con.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			String id = "";
+			while (resultSet.next()) {
+				id = resultSet.getString(1);
+			}
+
+			idUltimo = Integer.parseInt(id);
+
+			if (idUltimo == 0) {
+				return 1;
+			} else {
+				idUltimo++;
+			}
+
+			con.close();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getSQLState());
+		}
+		System.out.println("ULTIMO NUMERO "+idUltimo);
+		conexion.cerrarConexion();
+		return idUltimo;
+
+	}
+
+	public Ticket read(int numeroT) {
+		
+		Ticket unticket = new Ticket();
+		Vehiculo unVehiculo=new Vehiculo();
+		int numero, t=0;
+		Date fechaInicio=null;
+		Date fechaFin=null;
+		Double valorT=0.0;
+		Connection con = conexion.connect();
+		PreparedStatement statement =null;
+		ResultSet rs= null;
+		String sql="SELECT numero, fInicio, fFin, tiempo, valor, placaVehiculo,(select marca from vehiculo where placa=placaVehiculo) from ticket where numero =?";//
+				//"SELECT numero, fInicio, fFin, tiempo, valor from ticket where numero =?;";
+	
+		try {
+			statement = con.prepareStatement(sql);
+			statement.setInt(1, numeroT);
+			rs= statement.executeQuery();
+			while (rs.next()) {
+				unticket.setNumero(rs.getInt(1));
+				unticket.setfInicio(rs.getTimestamp(2));
+				unticket.setfFin(rs.getTimestamp(3));
+				unticket.setTiempo(rs.getInt(4));
+				unticket.setValor(rs.getDouble(5));
+				unVehiculo.setPlaca(rs.getString(6));
+				unVehiculo.setMarca(rs.getString(7));
+				unticket.setUnVehiculo(unVehiculo);
+	
+			}
+		} catch (SQLException e) {
+		
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			conexion.cerrarConexion();
+		}
+		System.out.println(unticket.toString());
+		return unticket;
+	}
+	public ArrayList<Ticket> obtenerTicket(String fecha) {
+		conexion= new ConexionDB();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		ArrayList<Ticket> lista = new ArrayList<>();
+		try {
+			String sql = "SELECT numero,tiempo,valor,placaVehiculo FROM ticket where finicio = ?;";
+			statement= conexion.connect().prepareStatement(sql);
+			Date param=Date.valueOf(fecha);
+			statement.setDate(1, param);
+			resultSet= statement.executeQuery();
+			while (resultSet.next()) {
+				Ticket t = new Ticket();
+				t.setNumero(resultSet.getInt(1));
+				t.setTiempo(resultSet.getInt(2));
+				t.setValor(resultSet.getDouble(3));
+				t.setUnVehiculo(vdao.read(resultSet.getString(4)));
+				lista.add(t);
+			}
+		
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}finally {
+			try {
+				resultSet.close();
+				statement.close();
+				conexion.cerrarConexion();
+			}catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+
+		return lista;
+	}
+
+}

@@ -1,0 +1,115 @@
+package serverboleteria;
+
+import java.util.List;
+
+import javax.ejb.Singleton;
+
+import ec.edu.ups.boleteriaVehiculos.datos.TIcketDAO;
+import ec.edu.ups.boleteriaVehiculos.datos.VehiculoDAO;
+import ec.edu.ups.boleteriaVehiculos.entidades.Ticket;
+import ec.edu.ups.boleteriaVehiculos.entidades.Vehiculo;
+
+
+@Singleton
+
+public class Operaciones implements OperacionesRemote,OperacionesLocales {
+	public int calcularTiempo(int numeroT) {
+		TIcketDAO ticketDao= new TIcketDAO();
+		VehiculoDAO vdao = new VehiculoDAO();
+		int retorno=0;
+		
+		String fecha1[]=ticketDao.read(numeroT).getfInicio().toString().split(" ");
+		String fecha2[]=ticketDao.read(numeroT).getfFin().toString().split(" ");
+		String hora1 = fecha1[1];
+		String hora2 = fecha2[1];
+
+		String[] h1 = hora1.split(":");
+		String[] h2 = hora2.split(":");
+		int resto = 0;
+		
+		int segundo = Integer.parseInt(h2[2].replace(".", ""))- Integer.parseInt(h1[2].replace(".", ""));
+		
+		if (segundo < 0){
+		   resto = -1;
+		   segundo = 60 - segundo;
+		}
+
+		int minuto = (Integer.parseInt(h2[1])- Integer.parseInt(h1[1])) - resto;
+		resto = 0;
+		if (minuto < 0){
+		   minuto= 60 - minuto;
+		   resto = -1;
+		}
+		int hora = (Integer.parseInt(h2[0])- Integer.parseInt(h1[0])) - resto;
+
+		//retorno="Diferencia= "+hora+":"+minuto+":"+segundo;
+		retorno=hora;
+		System.out.println(retorno);
+	
+		return Math.abs(retorno);
+				
+	}
+	public double calcularCosto(int numeroT) {	
+		TIcketDAO ticketDao= new TIcketDAO();
+		double retorno= (double) (this.calcularTiempo(numeroT)*0.75);
+		System.out.println(retorno);
+		return Math.abs(retorno);
+				
+	}
+	public Ticket preCobrarTicket(int numero) {
+		TIcketDAO ticketDAO= new TIcketDAO();
+		return ticketDAO.read(numero) ;
+	}
+	public boolean ingresarTicket(Ticket unTicket) {
+		boolean ticket= true;
+		TIcketDAO ticketDao= new TIcketDAO();
+		ticket = ticketDao.insertar(unTicket);
+		return ticket;
+	}
+	
+	public int numeroTicket() {
+		int retorno=0;
+		TIcketDAO ticketDATO= new TIcketDAO();
+		retorno=ticketDATO.getNumeroTicket();
+		return retorno;
+	}
+	
+	public Vehiculo buscarVehiculo(String placa) {
+		VehiculoDAO vehiculo = new VehiculoDAO() ;
+		return vehiculo.read(placa);
+		
+	}
+	public boolean ingresarVehiculo(String placa, String marca) {
+		boolean retorno = false;
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setPlaca(placa);
+		vehiculo.setMarca(marca);
+		VehiculoDAO vDAO= new VehiculoDAO();
+		 return vDAO.insertar(vehiculo);
+		
+	}
+	public Ticket buscarTicket(int numeroT) {
+		TIcketDAO ticket = new TIcketDAO() ;
+		return ticket.read(numeroT);
+	}
+	public boolean cobrar(Ticket unTicket) {
+		TIcketDAO ticketDao = new TIcketDAO();
+		return ticketDao.editarTicket(unTicket);
+	}
+	@Override
+	public int suma(int a, int b) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public List<Vehiculo> getVehiculos(String placa) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Ticket> getTickets(String placa) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,378 @@
+package vista;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
+
+import modelo.*;
+import negocio.OperacionesRemote;
+
+import javax.swing.JInternalFrame;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.swing.ImageIcon;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class VentanaPrincipal extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNumeroIngreso;
+	private JTextField txtHoraInicioIngreso;
+	private JTextField txtPlacaIngreso;
+	private JTextField txtMarcaIngreso;
+	private JTextField txtNroTicketCobrar;
+	private JTextField txtHoraEntradaCobrar;
+	private JTextField txtHoraSalidaCobrar;
+	private JTextField txtPlacaCobrar;
+	private JTextField txtMarcaCobrar;
+	private JTextField txtTiempoCobrar;
+	private JTextField txtValorCobrar;
+	SimpleDateFormat fechaFormato;
+	Date fechaActual;
+	Timer tiempo;
+	TimerTask tareaTiempo;
+	//GestionTickets gestionTickets;
+	
+	private OperacionesRemote operaciones;
+	
+	public void conectar() throws Exception {
+		System.out.println("in");
+		try {  
+			System.out.println("ou");
+            final Hashtable<String, Comparable> jndiProperties =  
+                    new Hashtable<String, Comparable>();  
+            jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY,  
+                    "org.wildfly.naming.client.WildFlyInitialContextFactory");  
+            jndiProperties.put("jboss.naming.client.ejb.context", true);  
+              
+            jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");  
+            jndiProperties.put(Context.SECURITY_PRINCIPAL, "ejb");  
+            jndiProperties.put(Context.SECURITY_CREDENTIALS, "ejb");  
+              
+            final Context context = new InitialContext(jndiProperties);  
+              
+            final String lookupName = "ejb:/serverboleteria/Operaciones!serverboleteria.OperacionesRemote";  
+              
+            this.operaciones = (OperacionesRemote) context.lookup(lookupName);  
+              
+        } catch (Exception ex) {  
+        	System.out.println("ERRORES " +ex.getLocalizedMessage());
+            ex.printStackTrace();  
+            throw ex;  
+        }  
+	}
+
+//	VehiculoDAO vehiculoDAO;
+//	TIcketDAO ticketDAO;
+	Conexionejb conexionejb;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaPrincipal frame = new VentanaPrincipal();
+					frame.setVisible(true);
+					frame.setTitle("Ventana");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VentanaPrincipal() {
+		iniciaComponentes();
+		Timer timer = new Timer();
+		TimerTask fecha= new TimerTask() {
+			@Override
+			public void run() {
+				fechaFormato = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+				// TODO Auto-generated method stub
+				txtHoraInicioIngreso.setText(""+fechaFormato.format(new Date()));
+				txtHoraSalidaCobrar.setText(""+fechaFormato.format(new Date()));
+			}
+		};
+		timer.schedule(fecha, 0, 1000);
+		
+		txtNumeroIngreso.setText(""+this.operaciones.numeroTicket());
+		
+	}
+	public void iniciaComponentes() {
+		try {
+			System.out.println("error ");
+			this.conectar();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			
+		}
+	
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 874, 567);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(5, 5, 846, 510);
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JInternalFrame vtnIngresoTicket = new JInternalFrame("Ingreso Ticket Nuevo");
+		panel.add(vtnIngresoTicket);
+		vtnIngresoTicket.getContentPane().setLayout(null);
+		
+		JLabel lblTicketNro = new JLabel("Ticket Nro:");
+		lblTicketNro.setBounds(148, 26, 68, 23);
+		vtnIngresoTicket.getContentPane().add(lblTicketNro);
+		
+		JLabel lblHora = new JLabel("Hora:");
+		lblHora.setBounds(162, 82, 68, 23);
+		vtnIngresoTicket.getContentPane().add(lblHora);
+		
+		JLabel lblPlaca = new JLabel("Placa");
+		lblPlaca.setBounds(162, 155, 68, 23);
+		vtnIngresoTicket.getContentPane().add(lblPlaca);
+		
+		JLabel lblMarcaIngreso = new JLabel("Marca:");
+		lblMarcaIngreso.setBounds(162, 228, 68, 23);
+		vtnIngresoTicket.getContentPane().add(lblMarcaIngreso);
+		
+		JButton btnRegistroIngreso = new JButton("Agregar");
+		btnRegistroIngreso.setIcon(null);
+		btnRegistroIngreso.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+ 				Vehiculo v= new Vehiculo();
+				v.setPlaca(txtPlacaIngreso.getText());
+				v.setMarca(txtMarcaIngreso.getText());
+				
+				operaciones.ingresarVehiculo(v.getPlaca(), v.getMarca());
+	
+				Ticket t = new Ticket();
+				txtNumeroIngreso.setText(""+operaciones.numeroTicket());
+				
+				t.setNumero(Integer.parseInt(txtNumeroIngreso.getText()));
+				
+				try {
+					fechaActual=fechaFormato.parse(txtHoraInicioIngreso.getText());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}/**/
+					
+				java.sql.Timestamp fechaSQL= new java.sql.Timestamp(fechaActual.getTime());
+
+				t.setfInicio(fechaSQL);
+				t.setUnVehiculo(v);
+				t.setValor(1);
+				
+				operaciones.ingresarTicket(t);
+				JOptionPane.showMessageDialog(null, "Se guardo exitosamente");
+				txtNumeroIngreso.setText(""+operaciones.numeroTicket());
+			}
+		});
+		btnRegistroIngreso.setBounds(199, 301, 99, 37);
+		vtnIngresoTicket.getContentPane().add(btnRegistroIngreso);
+		
+		JButton btnNuevoTicket = new JButton("Actualizar");
+		btnNuevoTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtNumeroIngreso.setText(""+operaciones.numeroTicket());
+				txtPlacaIngreso.setText("");
+				txtMarcaIngreso.setText("");
+				
+			}
+		});
+		btnNuevoTicket.setBounds(76, 301, 108, 37);
+		vtnIngresoTicket.getContentPane().add(btnNuevoTicket);
+		
+		txtNumeroIngreso = new JTextField();
+		txtNumeroIngreso.setEditable(false);
+		txtNumeroIngreso.setColumns(10);
+		txtNumeroIngreso.setBounds(100, 62, 179, 24);
+		vtnIngresoTicket.getContentPane().add(txtNumeroIngreso);
+		
+		txtHoraInicioIngreso = new JTextField();
+		txtHoraInicioIngreso.setEditable(false);
+		txtHoraInicioIngreso.setColumns(10);
+		txtHoraInicioIngreso.setBounds(100, 118, 179, 24);
+		vtnIngresoTicket.getContentPane().add(txtHoraInicioIngreso);
+		
+		txtPlacaIngreso = new JTextField();
+		txtPlacaIngreso.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				txtMarcaIngreso.setText(operaciones.buscarVehiculo(txtPlacaIngreso.getText()).getMarca());
+			}
+		});
+		txtPlacaIngreso.setColumns(10);
+		txtPlacaIngreso.setBounds(100, 191, 179, 24);
+		vtnIngresoTicket.getContentPane().add(txtPlacaIngreso);
+		
+		txtMarcaIngreso = new JTextField();
+		txtMarcaIngreso.setColumns(10);
+		txtMarcaIngreso.setBounds(100, 264, 179, 24);
+		vtnIngresoTicket.getContentPane().add(txtMarcaIngreso);
+		
+		JInternalFrame vtnCobrarTicket = new JInternalFrame("Cobrar Ticket Nuevo");
+		panel.add(vtnCobrarTicket);
+		vtnCobrarTicket.getContentPane().setLayout(null);
+		
+		JLabel label = new JLabel("Ticket Nro:");
+		label.setBounds(10, 11, 80, 23);
+		vtnCobrarTicket.getContentPane().add(label);
+		
+		JLabel lblHoraDeEntrada = new JLabel("Hora de Entrada: ");
+		lblHoraDeEntrada.setBounds(10, 45, 80, 23);
+		vtnCobrarTicket.getContentPane().add(lblHoraDeEntrada);
+		
+		JLabel lblHoraDeSalida = new JLabel("Hora de Salida:");
+		lblHoraDeSalida.setBounds(10, 79, 80, 23);
+		vtnCobrarTicket.getContentPane().add(lblHoraDeSalida);
+		
+		JLabel lblPlaca_1 = new JLabel("Placa:");
+		lblPlaca_1.setBounds(10, 107, 80, 23);
+		vtnCobrarTicket.getContentPane().add(lblPlaca_1);
+		
+		JLabel lblMarca = new JLabel("Marca:");
+		lblMarca.setBounds(10, 141, 80, 23);
+		vtnCobrarTicket.getContentPane().add(lblMarca);
+		
+		JLabel lblTiempo = new JLabel("Tiempo:");
+		lblTiempo.setBounds(10, 170, 80, 23);
+		vtnCobrarTicket.getContentPane().add(lblTiempo);
+		
+		JLabel lblValor = new JLabel("Valor:");
+		lblValor.setBounds(10, 204, 80, 23);
+		vtnCobrarTicket.getContentPane().add(lblValor);
+		
+		JButton btnCobrar = new JButton("Guardar");
+		btnCobrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Ticket ticket= new Ticket();
+				ticket.setNumero(Integer.parseInt(txtNroTicketCobrar.getText()));
+				try {
+					fechaActual=fechaFormato.parse(txtHoraSalidaCobrar.getText());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}/**/
+					
+				java.sql.Timestamp fechaSQL= new java.sql.Timestamp(fechaActual.getTime());
+
+				ticket.setfFin(fechaSQL);
+				System.out.println(ticket.getfFin());
+				operaciones.cobrar(ticket);
+				
+				txtTiempoCobrar.setText(""+operaciones.calcularTiempo(Integer.parseInt(txtNroTicketCobrar.getText())));
+				ticket.setTiempo(Integer.parseInt(txtTiempoCobrar.getText()));
+				txtValorCobrar.setText(""+operaciones.calcularCosto(Integer.parseInt(txtNroTicketCobrar.getText())));
+				
+				ticket.setValor(Double.parseDouble(txtValorCobrar.getText()));
+				operaciones.cobrar(ticket);
+			}
+		});
+		btnCobrar.setBounds(299, 53, 96, 35);
+		vtnCobrarTicket.getContentPane().add(btnCobrar);
+		
+		JButton btnNuevoCobroTicket = new JButton("Limpiar");
+		btnNuevoCobroTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtNroTicketCobrar.setText("");
+				txtHoraEntradaCobrar.setText("");
+				txtHoraSalidaCobrar.setText("");
+				txtPlacaCobrar.setText("");
+				txtMarcaCobrar.setText("");
+				txtTiempoCobrar.setText("");
+				txtValorCobrar.setText("");
+
+			}
+		});
+		btnNuevoCobroTicket.setBounds(299, 101, 96, 35);
+		vtnCobrarTicket.getContentPane().add(btnNuevoCobroTicket);
+		
+		txtNroTicketCobrar = new JTextField();
+		txtNroTicketCobrar.setColumns(10);
+		txtNroTicketCobrar.setBounds(100, 12, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtNroTicketCobrar);
+		
+		txtHoraEntradaCobrar = new JTextField();
+		txtHoraEntradaCobrar.setEditable(false);
+		txtHoraEntradaCobrar.setColumns(10);
+		txtHoraEntradaCobrar.setBounds(100, 46, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtHoraEntradaCobrar);
+		
+		txtHoraSalidaCobrar = new JTextField();
+		txtHoraSalidaCobrar.setEditable(false);
+		txtHoraSalidaCobrar.setColumns(10);
+		txtHoraSalidaCobrar.setBounds(100, 80, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtHoraSalidaCobrar);
+		
+		txtPlacaCobrar = new JTextField();
+		txtPlacaCobrar.setColumns(10);
+		txtPlacaCobrar.setBounds(100, 108, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtPlacaCobrar);
+		
+		txtMarcaCobrar = new JTextField();
+		txtMarcaCobrar.setColumns(10);
+		txtMarcaCobrar.setBounds(100, 142, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtMarcaCobrar);
+		
+		txtTiempoCobrar = new JTextField();
+		txtTiempoCobrar.setColumns(10);
+		txtTiempoCobrar.setBounds(100, 171, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtTiempoCobrar);
+		
+		txtValorCobrar = new JTextField();
+		txtValorCobrar.setEditable(false);
+		txtValorCobrar.setColumns(10);
+		txtValorCobrar.setBounds(100, 205, 179, 24);
+		vtnCobrarTicket.getContentPane().add(txtValorCobrar);
+		
+		JButton btnBuscarTicket = new JButton("Buscar");
+		btnBuscarTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int numeroT=Integer.parseInt(txtNroTicketCobrar.getText());
+				txtHoraEntradaCobrar.setText(""+ operaciones.preCobrarTicket(numeroT).getfInicio());
+				txtHoraSalidaCobrar.setText(""+operaciones.preCobrarTicket(numeroT).getfFin());
+				txtPlacaCobrar.setText(""+operaciones.preCobrarTicket(numeroT).getUnVehiculo().getPlaca());
+				txtMarcaCobrar.setText(""+operaciones.preCobrarTicket(numeroT).getUnVehiculo().getMarca());
+				txtTiempoCobrar.setText(""+operaciones.preCobrarTicket(numeroT).getTiempo());
+				txtValorCobrar.setText(""+operaciones.preCobrarTicket(numeroT).getValor());
+				
+				
+			}
+		});
+		btnBuscarTicket.setBounds(299, 11, 96, 29);
+		vtnCobrarTicket.getContentPane().add(btnBuscarTicket);
+		vtnCobrarTicket.setVisible(true);
+		vtnIngresoTicket.setVisible(true);
+	}
+
+	}

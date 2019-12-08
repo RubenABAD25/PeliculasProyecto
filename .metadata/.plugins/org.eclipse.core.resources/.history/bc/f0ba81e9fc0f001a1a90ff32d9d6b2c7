@@ -1,0 +1,87 @@
+package vista;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+
+import modelo.Ticket;
+import modelo.Vehiculo;
+import negocio.OperacionesLocales;
+
+@ManagedBean
+public class OperacionBean {
+	@Inject
+	private OperacionesLocales ol;
+	/* Beans properties */
+	private  Vehiculo veh;
+	private String parametro;
+	private Ticket ti;
+	
+	private List<Vehiculo>vehiculos;
+	private List<Ticket> tickets;
+	
+	
+	@PostConstruct
+	public void init() 
+	{
+		
+	}
+
+
+	public Vehiculo getVeh() {
+		return veh;
+	}
+
+
+	public void setVeh(Vehiculo veh) {
+		this.veh = veh;
+	}
+
+
+	public String getParametro() {
+		return parametro;
+	}
+
+
+	public void setParametro(String parametro) {
+		this.parametro = parametro;
+	}
+
+
+	public Ticket getTi() {
+		return ti;
+	}
+
+
+	public void setTi(Ticket ti) {
+		this.ti = ti;
+	}
+
+
+	public List<Vehiculo> getVehiculos() {
+		return vehiculos;
+	}
+
+
+	public void setVehiculos(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
+	}
+
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	
+	public String buscarTikets() {
+		this.clientes=gl.getCliente(this.cedula);
+		return null;
+	}
+	
+}

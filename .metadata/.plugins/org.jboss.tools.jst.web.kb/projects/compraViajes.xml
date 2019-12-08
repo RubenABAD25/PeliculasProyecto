@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Users/Ruben/.m2/repository/org/hibernate/hibernate-validator-annotation-processor/5.1.3.Final/hibernate-validator-annotation-processor-5.1.3.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/test/arquillian-test-api/1.1.2.Final-wildfly-1/arquillian-test-api-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/spec/javax/faces/jboss-jsf-api_2.2_spec/2.2.8/jboss-jsf-api_2.2_spec-2.2.8.jar"/>
+  <path value="/compraViajes/src/main/webapp/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="compraViajes"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/core/arquillian-core-impl-base/1.1.2.Final-wildfly-1/arquillian-core-impl-base-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/hibernate/hibernate-jpamodelgen/4.3.5.Final/hibernate-jpamodelgen-4.3.5.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/config/arquillian-config-api/1.1.2.Final-wildfly-1/arquillian-config-api-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/container/arquillian-container-impl-base/1.1.2.Final-wildfly-1/arquillian-container-impl-base-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/test/arquillian-test-spi/1.1.2.Final-wildfly-1/arquillian-test-spi-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-spi/1.1.2/shrinkwrap-spi-1.1.2.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-spi/2.0.0-alpha-3/shrinkwrap-descriptors-spi-2.0.0-alpha-3.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/resteasy/jaxrs-api/3.0.10.Final/jaxrs-api-3.0.10.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/container/arquillian-container-spi/1.1.2.Final-wildfly-1/arquillian-container-spi-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-impl-base/1.1.2.Final-wildfly-1/arquillian-container-test-impl-base-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/core/arquillian-core-spi/1.1.2.Final-wildfly-1/arquillian-core-spi-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-api/1.1.2/shrinkwrap-api-1.1.2.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/test/arquillian-test-impl-base/1.1.2.Final-wildfly-1/arquillian-test-impl-base-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-spi/1.1.2.Final-wildfly-1/arquillian-container-test-spi-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Final/jboss-annotations-api_1.2_spec-1.0.0.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/junit/arquillian-junit-core/1.1.2.Final-wildfly-1/arquillian-junit-core-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/core/arquillian-core-api/1.1.2.Final-wildfly-1/arquillian-core-api-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-api/1.1.2.Final-wildfly-1/arquillian-container-test-api-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/config/arquillian-config-impl-base/1.1.2.Final-wildfly-1/arquillian-config-impl-base-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/junit/arquillian-junit-container/1.1.2.Final-wildfly-1/arquillian-junit-container-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/junit/junit/4.11/junit-4.11.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/arquillian/protocol/arquillian-protocol-servlet/1.1.2.Final-wildfly-1/arquillian-protocol-servlet-1.1.2.Final-wildfly-1.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/mysql/mysql-connector-java/5.1.48/mysql-connector-java-5.1.48.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/shrinkwrap-descriptors-api-base-2.0.0-alpha-3.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/spec/javax/ejb/jboss-ejb-api_3.2_spec/1.0.0.Final/jboss-ejb-api_3.2_spec-1.0.0.Final.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar"/>
+  <path value="C:/Users/Ruben/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-impl-base/1.1.2/shrinkwrap-impl-base-1.1.2.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification"/>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource name="%1;" path="%0"/>
+   <linked-resource name="%1;" path="%2"/>
+  </core>
+  <core validator-id="jboss.jsf.core"/>
+  <el>
+   <linked-el length="28" name="%3" offset="726" path="%4"/>
+   <linked-el length="26" name="%3" offset="393" path="%5"/>
+   <linked-el length="27" name="%3" offset="555" path="%6"/>
+   <linked-el length="31" name="%3" offset="471" path="%5"/>
+   <linked-el length="22" name="%3" offset="461" path="%6"/>
+   <linked-el length="20" name="%7" offset="3770" path="%8"/>
+   <linked-el length="20" name="%7" offset="4079" path="%8"/>
+   <linked-el length="21" name="%9" offset="8889" path="%8"/>
+   <linked-el length="21" name="%10" offset="8889" path="%8"/>
+   <linked-el length="20" name="%11" offset="3770" path="%8"/>
+   <linked-el length="21" name="%11" offset="9049" path="%8"/>
+   <linked-el length="26" name="%11" offset="10417" path="%8"/>
+   <linked-el length="21" name="%11" offset="12656" path="%8"/>
+   <linked-el length="20" name="%11" offset="4079" path="%8"/>
+   <linked-el length="31" name="%11" offset="9647" path="%8"/>
+   <linked-el length="24" name="%12" offset="373" path="%6"/>
+   <linked-el length="24" name="%12" offset="373" path="%4"/>
+   <linked-el length="18" name="%12" offset="461" path="%13"/>
+   <linked-el length="22" name="%12" offset="393" path="%14"/>
+   <linked-el length="25" name="%12" offset="645" path="%13"/>
+   <linked-el length="20" name="%12" offset="641" path="%4"/>
+   <linked-el length="17" name="%12" offset="460" path="%4"/>
+   <linked-el length="26" name="%12" offset="393" path="%5"/>
+   <linked-el length="27" name="%12" offset="555" path="%6"/>
+   <linked-el length="25" name="%12" offset="544" path="%15"/>
+   <linked-el length="22" name="%12" offset="614" path="%15"/>
+   <linked-el length="29" name="%12" offset="530" path="%5"/>
+   <linked-el length="28" name="%12" offset="726" path="%4"/>
+   <linked-el length="22" name="%12" offset="686" path="%14"/>
+   <linked-el length="22" name="%12" offset="616" path="%14"/>
+   <linked-el length="27" name="%12" offset="551" path="%13"/>
+   <linked-el length="29" name="%12" offset="668" path="%15"/>
+   <linked-el length="31" name="%12" offset="471" path="%5"/>
+   <linked-el length="25" name="%12" offset="544" path="%14"/>
+   <linked-el length="29" name="%12" offset="736" path="%14"/>
+   <linked-el length="31" name="%12" offset="467" path="%15"/>
+   <linked-el length="26" name="%12" offset="738" path="%13"/>
+   <linked-el length="22" name="%12" offset="393" path="%15"/>
+   <linked-el length="21" name="%12" offset="830" path="%13"/>
+   <linked-el length="26" name="%12" offset="549" path="%4"/>
+   <linked-el length="31" name="%12" offset="467" path="%14"/>
+   <linked-el length="22" name="%12" offset="461" path="%6"/>
+   <linked-el length="24" name="%12" offset="373" path="%13"/>
+   <linked-el length="22" name="%16" offset="393" path="%15"/>
+   <linked-el length="28" name="%16" offset="726" path="%4"/>
+   <linked-el length="26" name="%16" offset="549" path="%4"/>
+   <linked-el length="20" name="%16" offset="641" path="%4"/>
+   <linked-el length="17" name="%16" offset="460" path="%4"/>
+   <linked-el length="25" name="%16" offset="544" path="%15"/>
+   <linked-el length="25" name="%16" offset="645" path="%13"/>
+   <linked-el length="31" name="%16" offset="467" path="%15"/>
+   <linked-el length="26" name="%16" offset="738" path="%13"/>
+   <linked-el length="31" name="%17" offset="9647" path="%8"/>
+   <linked-el length="31" name="%18" offset="9647" path="%8"/>
+   <linked-el length="21" name="%19" offset="9049" path="%8"/>
+   <linked-el length="21" name="%19" offset="12656" path="%8"/>
+   <linked-el length="31" name="%20" offset="9647" path="%8"/>
+   <linked-el length="26" name="%21" offset="10417" path="%8"/>
+   <linked-el length="20" name="%22" offset="3770" path="%8"/>
+   <linked-el length="20" name="%22" offset="4079" path="%8"/>
+   <linked-el length="21" name="%23" offset="9049" path="%8"/>
+   <linked-el length="21" name="%23" offset="12656" path="%8"/>
+   <linked-el length="26" name="%24" offset="10417" path="%8"/>
+   <linked-el length="29" name="%1" offset="530" path="%5"/>
+   <linked-el length="24" name="%1" offset="373" path="%6"/>
+   <linked-el length="24" name="%1" offset="373" path="%4"/>
+   <linked-el length="22" name="%1" offset="686" path="%14"/>
+   <linked-el length="22" name="%1" offset="616" path="%14"/>
+   <linked-el length="22" name="%1" offset="393" path="%14"/>
+   <linked-el length="29" name="%1" offset="668" path="%15"/>
+   <linked-el length="31" name="%1" offset="471" path="%5"/>
+   <linked-el length="25" name="%1" offset="544" path="%14"/>
+   <linked-el length="29" name="%1" offset="736" path="%14"/>
+   <linked-el length="31" name="%1" offset="467" path="%15"/>
+   <linked-el length="22" name="%1" offset="393" path="%15"/>
+   <linked-el length="31" name="%1" offset="467" path="%14"/>
+   <linked-el length="26" name="%1" offset="393" path="%5"/>
+   <linked-el length="25" name="%1" offset="544" path="%15"/>
+   <linked-el length="24" name="%1" offset="373" path="%13"/>
+   <linked-el length="22" name="%1" offset="614" path="%15"/>
+   <linked-el length="21" name="%25" offset="830" path="%13"/>
+   <linked-el length="18" name="%25" offset="461" path="%13"/>
+   <linked-el length="27" name="%25" offset="551" path="%13"/>
+   <linked-el length="22" name="%25" offset="393" path="%14"/>
+   <linked-el length="31" name="%25" offset="467" path="%14"/>
+   <linked-el length="25" name="%25" offset="645" path="%13"/>
+   <linked-el length="25" name="%25" offset="544" path="%14"/>
+   <linked-el length="26" name="%25" offset="738" path="%13"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="/compraViajes/src/main/webapp/ingresoGeo.xhtml" value="%15"/>
+  <alias path="/compraViajes/src/main/java/negocio/Gestion.java" value="%2"/>
+  <alias path="project" value="%10"/>
+  <alias path="/compraViajes/src/main/java/modelo/Geografia.java" value="%16"/>
+  <alias path="version.war" value="%19"/>
+  <alias path="version.surefire" value="%21"/>
+  <alias path="/compraViajes/src/main/java/vista/GestionBean.java" value="%1"/>
+  <alias path="/compraViajes/src/main/java/modelo/Tipo.java" value="%3"/>
+  <alias path="/compraViajes/src/main/webapp/ingresoR.xhtml" value="%14"/>
+  <alias path="version.jboss.bom" value="%7"/>
+  <alias path="/compraViajes/pom.xml" value="%8"/>
+  <alias path="project.artifactId" value="%9"/>
+  <alias path="/compraViajes/src/main/java/negocio/GestionLocal.java" value="%0"/>
+  <alias path="version" value="%11"/>
+  <alias path="/compraViajes/src/main/webapp/listadoR.xhtml" value="%13"/>
+  <alias path="gestionBean" value="%12"/>
+  <alias path="version.wildfly.maven.plugin" value="%17"/>
+  <alias path="version.wildfly.maven" value="%18"/>
+  <alias path="version.wildfly" value="%20"/>
+  <alias path="/compraViajes/src/main/webapp/ingresoT.xhtml" value="%5"/>
+  <alias path="version.jboss" value="%22"/>
+  <alias path="version.war.plugin" value="%23"/>
+  <alias path="/compraViajes/src/main/webapp/listadoT.xhtml" value="%6"/>
+  <alias path="version.surefire.plugin" value="%24"/>
+  <alias path="/compraViajes/src/main/java/modelo/Ruta.java" value="%25"/>
+  <alias path="/compraViajes/src/main/webapp/listadoG.xhtml" value="%4"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+ </uris>
+</kb-project>

@@ -1,0 +1,27 @@
+package vista;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+
+import modelo.Ticket;
+import modelo.Vehiculo;
+import negocio.OperacionesLocales;
+
+@ManagedBean
+public class OperacionBean {
+	@Inject
+	private OperacionesLocales ol;
+	/* Beans properties */
+	private  Vehiculo veh;
+	private String parametro;
+	private Ticket ti;
+	
+	
+	
+	@PostConstruct
+	public void init() 
+	{
+		
+	}
+}
